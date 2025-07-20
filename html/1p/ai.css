@@ -1,0 +1,366 @@
+/* 全体の基本設定 */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6; /* 行の高さを調整し、テキストの可読性を向上 */
+}
+
+/* ヘッダーのスタイル */
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed; /* ヘッダーをページ上部に固定 */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* 他のコンテンツの上に表示 */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    max-width: 1200px; /* ヘッダーの最大幅を設定（コンテンツに合わせる） */
+    margin: 0 auto; /* 中央寄せ */
+}
+
+.logo {
+    font-size: 1.8em; /* ロゴのサイズを少し大きく */
+    font-weight: bold;
+    color: #333; /* ロゴの色を調整 */
+}
+
+/* ナビゲーション */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 25px; /* リンク間のスペースを少し広げる */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #555;
+    transition: color 0.3s ease;
+    font-weight: bold; /* ナビゲーションリンクを太字に */
+}
+
+nav ul li a:hover {
+    color: #007bff;
+}
+
+/* ヘッダー固定によるコンテンツのずれを修正 */
+main {
+    padding-top: 80px; /* ヘッダーの高さに合わせてメインコンテンツを開始 */
+}
+
+/* ヒーローセクション */
+#hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background-image: url('../image/girl1-1.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: scroll;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明の黒（0.5は透明度） */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    padding: 20px;
+    max-width: 80%;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.3); /* コンテンツ背景に半透明の黒を重ねる */
+    border-radius: 14px;
+}
+
+.hero-content h2 {
+    font-size: 2.8em; /* 見出しを少し大きく */
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2em; /* 段落を少し大きく */
+}
+
+
+/* --- メインコンテンツとサイドバーのレイアウト --- */
+/* ★ここから追加・修正: content-wrapper を Flexbox コンテナにする */
+.content-wrapper {
+    display: flex; /* 子要素 (main-content-area と sidebar) を横並びにする */
+    max-width: 2000px; /* サイト全体の最大幅 */
+    margin: 40px auto; /* 中央寄せと上下の余白 */
+    padding: 0 0px; /* 上下、左右のパディング */
+    align-items: flex-start; /* 上揃え */
+    gap: 40px; /* main-content-area と sidebar の間の隙間 */
+}
+
+/* ★ここから追加: メインコンテンツ領域のスタイル */
+.main-content-area {
+    flex: 2; /* 利用可能なスペースの大部分 (例: 75%) を占める */
+    min-width: 0; /* フレックスアイテムの最小幅を設定 (コンテンツが溢れるのを防ぐ) */
+}
+
+/* ギャラリー全体 */
+.gallery {
+    padding: 40px; /* 上下左右のパディングを均等に */
+    text-align: center;
+    background-color: white;
+    margin-bottom: 40px; /* 各ギャラリーセクションの下に余白 */
+    border-radius: 8px; /* 角を丸くする */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* 軽い影を追加 */
+}
+
+.gallery h2 {
+    font-size: 2.2em; /* ギャラリー見出しを調整 */
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* 画像グリッド */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 2fr -> 1fr に変更して均等な比率に */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* 画像表示 */
+.image-grid img {
+    width: 100%;
+    height: 250px; /* 画像の高さを固定し、統一感を出す */
+    object-fit: cover;
+    border-radius: 8px; /* 角丸を一般的なサイズに調整 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* シャドウの変化もアニメーション */
+}
+
+.image-grid img:hover {
+    transform: scale(1.05) rotate(3deg); /* ホバーで少し拡大し、わずかに回転 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* ホバー時の影を強調 */
+}
+
+/* プロフィール・お問い合わせ */
+#profile, #contact {
+    padding: 40px; /* 上下左右のパディングを調整 */
+    text-align: center;
+    background-color: white;
+    margin-bottom: 40px; /* 各セクションの下に余白 */
+    border-radius: 8px; /* 角を丸くする */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* 軽い影を追加 */
+}
+
+#profile h2, #contact h2 {
+    font-size: 2.2em; /* 見出しを調整 */
+    margin-bottom: 20px;
+    color: #333;
+}
+
+
+/* ★ここから追加・修正: サイドバーのスタイル */
+.sidebar {
+    flex: 1; /* 利用可能なスペースの残りの部分 (例: 25%) を占める */
+    background-color: #fff; /* 背景色 */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    min-width: 250px; /* サイドバーの最小幅を設定 (コンテンツが潰れるのを防ぐ) */
+    position: sticky; /* スクロールしても固定されるように */
+    top: 100px; /* ヘッダーの下に表示（ヘッダーの高さ＋少し余白） */
+    align-self: flex-start; /* flexコンテナ内で上部に固定 */
+}
+
+.sidebar h3 {
+    margin-top: 0;
+    font-size: 1.4em;
+    color: #333;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #007bff;
+    display: block;
+    padding: 8px 0;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+    padding-left: 5px; /* ホバーで少しインデント */
+}
+
+.sidebar p {
+    font-size: 0.95em;
+    color: #555;
+    line-height: 1.6;
+    margin-top: 20px;
+}
+
+/* セクション間のスペースを作るためのクラス */
+.section-spacer {
+    height: 60px; /* セクション間の余白を調整 */
+    background-color: transparent;
+    width: 100%; /* Flexアイテム内で正しく機能するように */
+    box-sizing: border-box; /* パディングやボーダーを含めて幅を計算 */
+}
+/* サイドバー内のリンク画像のスタイル */
+.sidebar .sidebar-link-image {
+    max-width: 100px; /* 例えば最大幅を100pxに設定 */
+    height: auto;    /* 高さは自動調整で縦横比を維持 */
+    display: block;  /* 必要に応じてブロック要素にする */
+    margin: 10px auto; /* 中央寄せしたい場合 */
+    border-radius: 8px; /* 角を丸くする (任意) */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 影 (任意) */
+}
+
+/* 必要であれば、リンク内の画像へのホバー効果なども追加できます */
+.sidebar ul li a:hover .sidebar-link-image {
+    opacity: 0.8; /* ホバーで少し透明にする (例) */
+}
+
+
+/* フッター */
+footer {
+    text-align: center;
+    padding: 25px; /* パディングを調整 */
+    background-color: #333;
+    color: #fff;
+    margin-top: 40px; /* メインコンテンツとの間に余白 */
+}
+
+/* --- レスポンシブデザイン --- */
+@media (max-width: 992px) { /* タブレット向け調整 */
+    .header-container {
+        padding: 15px 20px;
+    }
+
+    nav ul li {
+        margin-left: 15px;
+    }
+
+    .content-wrapper {
+        flex-direction: column; /* メインコンテンツとサイドバーを縦並びに */
+        padding: 0 15px;
+        margin-top: 20px;
+    }
+
+    .main-content-area {
+        width: 100%;
+        margin-bottom: 40px; /* サイドバーが下にきたときの余白 */
+    }
+
+    .sidebar {
+        width: 100%;
+        min-width: unset; /* 最小幅をリセット */
+        position: static; /* 固定を解除 */
+        top: auto;
+        margin-top: 0; /* 余白を調整 */
+    }
+
+    .gallery, #profile, #contact {
+        padding: 30px 20px; /* パディングを調整 */
+    }
+
+    .image-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* スマホで画像が小さくなりすぎないように調整 */
+    }
+    
+    .hero-content h2 {
+        font-size: 2em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 576px) { /* スマートフォン向け調整 */
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start; /* ロゴを左寄せに */
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+
+    nav ul {
+        flex-wrap: wrap; /* ナビゲーションリンクを複数行に折り返す */
+        justify-content: flex-start; /* 左寄せに */
+        width: 100%;
+    }
+
+    nav ul li {
+        margin: 5px 10px 5px 0; /* 縦並びになった際の余白調整 */
+    }
+
+    #hero {
+        height: 80vh; /* スマホでヒーローセクションの高さを調整 */
+    }
+
+    .hero-content {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    .hero-content h2 {
+        font-size: 1.8em;
+    }
+
+    .hero-content p {
+        font-size: 0.9em;
+    }
+
+    .gallery, #profile, #contact {
+        padding: 20px 15px;
+    }
+
+    .image-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* さらに小さい画面向けに調整 */
+    }
+    
+    .sidebar {
+        padding: 15px;
+    }
+}
